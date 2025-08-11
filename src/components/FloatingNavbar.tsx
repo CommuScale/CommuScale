@@ -38,10 +38,15 @@ export default function FloatingNavbar() {
       <div className="flex items-center justify-between space-x-8">
         {/* Logo */}
         <motion.div
-          className="text-white font-bold text-xl"
+          className="flex items-center space-x-2 text-white font-bold text-xl"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
+          <img
+            src="/CommuNav.png"
+            alt="CommuScale Logo"
+            className="w-8 h-8 object-contain"
+          />
           <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
             CommuScale
           </span>
