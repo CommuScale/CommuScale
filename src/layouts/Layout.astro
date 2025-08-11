@@ -1,0 +1,83 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="CommuScale - Scale your business to 7-figures with proven marketing strategies, automation, and community building." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Performance optimizations -->
+    <meta name="theme-color" content="#8B5CF6" />
+    <meta name="color-scheme" content="dark light" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://commuscale.com/" />
+    <meta property="og:title" content="CommuScale - Scale Your Business to 7-Figures" />
+    <meta property="og:description" content="Transform your business with proven marketing strategies, automation, and community building. Get your free strategy call today." />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://commuscale.com/" />
+    <meta property="twitter:title" content="CommuScale - Scale Your Business to 7-Figures" />
+    <meta property="twitter:description" content="Transform your business with proven marketing strategies, automation, and community building. Get your free strategy call today." />
+    
+    <!-- Calendly Widget Script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </head>
+  <body class="font-sans antialiased">
+    <slot />
+    
+    <!-- Critical CSS for performance -->
+    <style>
+      html {
+        font-family: 'Inter', system-ui, sans-serif;
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        background: #0f172a;
+        overflow-x: hidden;
+      }
+      
+      /* Performance optimizations */
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Smooth scrolling for better UX */
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </body>
+</html>
