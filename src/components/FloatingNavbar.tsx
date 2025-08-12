@@ -24,7 +24,7 @@ export default function FloatingNavbar() {
 
   return (
     <motion.nav
-      className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-40 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-md rounded-full px-3 sm:px-6 py-2 sm:py-3 shadow-2xl border border-white/30 mx-4 sm:mx-0 max-w-[calc(100vw-2rem)] sm:max-w-none"
+      className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-40 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-md rounded-full px-4 sm:px-6 py-3 sm:py-3 shadow-2xl border border-white/30 mx-3 sm:mx-0 max-w-[calc(100vw-1.5rem)] sm:max-w-none"
       initial={{ y: -100, opacity: 0 }}
       animate={{ 
         y: isHidden ? -100 : 0, 
@@ -35,7 +35,7 @@ export default function FloatingNavbar() {
         ease: "easeInOut" 
       }}
     >
-      <div className="flex items-center justify-between space-x-2 sm:space-x-8">
+      <div className="flex items-center justify-between space-x-3 sm:space-x-8">
         {/* Logo */}
         <motion.div
           className="flex items-center space-x-1 sm:space-x-2 text-white font-bold text-lg sm:text-xl cursor-pointer touch-target"
@@ -51,7 +51,7 @@ export default function FloatingNavbar() {
             className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
             loading="eager"
           />
-          <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent hidden xs:inline sm:inline">
+          <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
             CommuScale
           </span>
         </motion.div>
@@ -76,11 +76,11 @@ export default function FloatingNavbar() {
           href="https://calendly.com/comunkn/30min"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-purple-600 px-3 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm hover:bg-purple-50 transition-colors duration-200 flex items-center space-x-1 sm:space-x-2 touch-target"
+          className="bg-white text-purple-600 px-4 sm:px-6 py-2 rounded-full font-semibold text-sm sm:text-sm hover:bg-purple-50 transition-colors duration-200 flex items-center space-x-2 sm:space-x-2 touch-target"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Calendar size={14} className="sm:w-4 sm:h-4" />
+          <Calendar size={16} className="sm:w-4 sm:h-4" />
           <span className="whitespace-nowrap">Book Now</span>
         </motion.a>
 

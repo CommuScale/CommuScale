@@ -204,7 +204,10 @@ export default function BookCallSection() {
             className="relative"
           >
                          {/* Calendly Widget */}
-             <div style={{ height: '600px' }} className="sm:h-[700px] lg:h-[901px]">
+             <div 
+               style={{ height: '850px' }} 
+               className="sm:h-[950px] md:h-[1020px] lg:h-[1080px] xl:h-[1120px]"
+             >
                <iframe
                  src="https://calendly.com/comunkn/30min?embed_type=Inline&embed_domain=localhost&background_color=000000&text_color=ffffff&primary_color=ff00f8"
                  width="100%"
@@ -212,7 +215,13 @@ export default function BookCallSection() {
                  frameBorder="0"
                  title="Schedule a call with CommuScale"
                  className="rounded-xl sm:rounded-2xl"
-                 style={{ overflow: 'hidden' }}
+                 style={{ 
+                   overflow: 'hidden',
+                   border: 'none',
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none'
+                 }}
+                 scrolling="no"
                  loading="lazy"
                />
              </div>

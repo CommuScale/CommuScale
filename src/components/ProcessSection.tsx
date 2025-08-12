@@ -204,17 +204,7 @@ export default function ProcessSection() {
                   </motion.div>
                 </div>
 
-                {/* Mobile Timeline Connector */}
-                <div className="md:hidden absolute left-8 top-16 w-0.5 h-16 bg-gray-700">
-                  {activeStep > index && (
-                    <motion.div
-                      className="w-full bg-gradient-to-b from-purple-500 to-pink-500"
-                      initial={{ height: '0%' }}
-                      animate={{ height: '100%' }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    />
-                  )}
-                </div>
+
               </motion.div>
             ))}
           </motion.div>
