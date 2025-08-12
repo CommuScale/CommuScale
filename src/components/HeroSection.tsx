@@ -3,7 +3,7 @@ import { Play } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="min-h-[140vh] flex items-start justify-center relative overflow-hidden pt-28 md:pt-32 pb-16">
+    <section id="home" className="min-h-screen sm:min-h-[120vh] lg:min-h-[140vh] flex items-start justify-center relative overflow-hidden pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-16">
       {/* Animated Gradient Background */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
@@ -21,15 +21,15 @@ export default function HeroSection() {
           ease: "easeInOut"
         }}
       />
-      {/* Animated Background Effects */}
+      {/* Animated Background Effects - Reduced for mobile performance */}
       <div className="absolute inset-0">
-        {/* Floating Background Orbs */}
+        {/* Floating Background Orbs - Simplified for mobile */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-purple-500/20 rounded-full blur-2xl sm:blur-3xl"
           animate={{
-            x: [0, 100, -50, 0],
-            y: [0, -50, 100, 0],
-            scale: [1, 1.2, 0.8, 1],
+            x: [0, 50, -25, 0],
+            y: [0, -25, 50, 0],
+            scale: [1, 1.1, 0.9, 1],
           }}
           transition={{
             duration: 20,
@@ -39,11 +39,11 @@ export default function HeroSection() {
         />
         
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-pink-500/20 rounded-full blur-2xl sm:blur-3xl"
           animate={{
-            x: [0, -100, 50, 0],
-            y: [0, 50, -100, 0],
-            scale: [1, 0.8, 1.2, 1],
+            x: [0, -50, 25, 0],
+            y: [0, 25, -50, 0],
+            scale: [1, 0.9, 1.1, 1],
           }}
           transition={{
             duration: 25,
@@ -112,7 +112,7 @@ export default function HeroSection() {
         >
           {/* Main Headline */}
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -164,20 +164,20 @@ export default function HeroSection() {
           >
 
 
-            <div className="relative max-w-full mx-auto px-2">
+            <div className="relative max-w-full mx-auto px-2 sm:px-4">
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative aspect-[16/10] bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-3xl overflow-hidden cursor-pointer group border border-white/20 shadow-2xl"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="relative aspect-[16/10] bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group border border-white/20 shadow-2xl touch-target"
                 style={{ boxShadow: '0 25px 50px -12px rgba(139, 92, 246, 0.25)' }}
               >
                 {/* Video Placeholder */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-32 h-32 bg-white/20 backdrop-blur-lg rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-white/20 backdrop-blur-lg rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300 touch-target"
                   >
-                    <Play className="w-16 h-16 text-white ml-1" fill="currentColor" />
+                    <Play className="w-8 h-8 sm:w-10 sm:h-10 lg:w-16 lg:h-16 text-white ml-0.5 sm:ml-1" fill="currentColor" />
                   </motion.div>
                 </div>
 
@@ -185,13 +185,13 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300"></div>
 
                 {/* Video Info */}
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Case Study: $0 to $1.2M in 8 Months</h3>
-                  <p className="text-gray-300">See how we transformed a local business into a market leader</p>
+                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 text-white">
+                  <h3 className="text-sm sm:text-xl font-semibold mb-1 sm:mb-2">Case Study: $0 to $1.2M in 8 Months</h3>
+                  <p className="text-gray-300 text-xs sm:text-base hidden sm:block">See how we transformed a local business into a market leader</p>
                 </div>
 
                 {/* Duration Badge */}
-                <div className="absolute top-6 right-6 bg-black/50 backdrop-blur-lg px-3 py-1 rounded-full text-white text-sm">
+                <div className="absolute top-3 sm:top-6 right-3 sm:right-6 bg-black/50 backdrop-blur-lg px-2 sm:px-3 py-1 rounded-full text-white text-xs sm:text-sm">
                   12:34
                 </div>
               </motion.div>

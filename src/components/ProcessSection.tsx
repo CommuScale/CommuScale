@@ -104,12 +104,12 @@ export default function ProcessSection() {
     <section 
       ref={sectionRef}
       id="process" 
-      className="min-h-[120vh] py-32 bg-slate-950 relative overflow-hidden"
+      className="min-h-screen sm:min-h-[120vh] py-16 sm:py-24 lg:py-32 bg-slate-950 relative overflow-hidden"
     >
-      {/* Background Effects */}
+      {/* Background Effects - Optimized for mobile */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-purple-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-pink-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,7 +121,7 @@ export default function ProcessSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Our Proven{' '}
             <span 
               className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
@@ -135,7 +135,7 @@ export default function ProcessSection() {
             <br />
             Process
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
             Our systematic approach transforms your business from where it is now to sustainable 7-figure success.
           </p>
         </motion.div>
@@ -143,7 +143,7 @@ export default function ProcessSection() {
         {/* Process Steps */}
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-12 top-0 w-0.5 bg-gray-700 h-full">
+          <div className="absolute left-6 sm:left-8 md:left-12 top-0 w-0.5 bg-gray-700" style={{ height: 'calc(100% - 320px)' }}>
             <div 
               ref={timelineRef}
               className="w-full bg-gradient-to-b from-purple-500 to-pink-500 origin-top"
@@ -157,7 +157,7 @@ export default function ProcessSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-16 md:space-y-20"
+            className="space-y-12 sm:space-y-16 md:space-y-20"
           >
             {steps.map((step, index) => (
               <motion.div
@@ -170,16 +170,16 @@ export default function ProcessSection() {
                 {/* Step Number Circle */}
                 <div className="relative z-10 flex-shrink-0">
                   <motion.div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center font-bold text-xl transition-all duration-300 ${
+                    className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-300 touch-target ${
                       activeStep >= index 
                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25' 
                         : 'bg-gray-800 text-gray-400 border-2 border-gray-700'
                     }`}
                     whileHover={{ 
-                      scale: 1.1,
+                      scale: 1.05,
                       boxShadow: activeStep >= index 
-                        ? '0 0 30px rgba(139, 92, 246, 0.4)' 
-                        : '0 0 20px rgba(107, 114, 128, 0.3)'
+                        ? '0 0 20px rgba(139, 92, 246, 0.4)' 
+                        : '0 0 15px rgba(107, 114, 128, 0.3)'
                     }}
                   >
                     {step.number}
@@ -187,15 +187,15 @@ export default function ProcessSection() {
                 </div>
 
                 {/* Step Content */}
-                <div className="ml-8 flex-1 group-hover:translate-x-2 transition-transform duration-300">
+                <div className="ml-4 sm:ml-6 md:ml-8 flex-1 group-hover:translate-x-1 sm:group-hover:translate-x-2 transition-transform duration-300">
                   <motion.div
-                    className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
-                    whileHover={{ y: -5 }}
+                    className="bg-white/5 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/10 hover:border-white/20 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
+                    whileHover={{ y: -2 }}
                   >
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 group-hover:text-purple-300 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-gray-300 text-lg leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                    <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                       {step.description}
                     </p>
 

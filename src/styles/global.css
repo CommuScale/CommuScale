@@ -95,6 +95,9 @@
   .touch-target {
     min-height: 44px;
     min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   /* Mobile viewport handling */
@@ -155,6 +158,33 @@
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+  }
+  
+  /* Reduce motion on mobile for better performance */
+  @media (max-width: 768px) {
+    .reduce-motion {
+      animation-duration: 0.5s !important;
+      transition-duration: 0.2s !important;
+    }
+    
+    /* Optimize blur effects for mobile */
+    .mobile-blur {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    /* Mobile-specific font loading */
+    .font-optimized {
+      font-display: swap;
+      text-rendering: optimizeSpeed;
+    }
+  }
+  
+  /* Viewport meta improvements */
+  @supports (-webkit-touch-callout: none) {
+    .ios-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
   }
 }
 

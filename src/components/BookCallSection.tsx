@@ -63,11 +63,11 @@ export default function BookCallSection() {
   ];
 
   return (
-    <section id="book-call" className="min-h-[120vh] py-32 bg-slate-900 relative overflow-hidden">
-      {/* Background Effects */}
+    <section id="book-call" className="min-h-screen sm:min-h-[120vh] py-16 sm:py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
+      {/* Background Effects - Optimized for mobile */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-purple-500/20 rounded-full blur-2xl sm:blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-pink-500/20 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -204,15 +204,16 @@ export default function BookCallSection() {
             className="relative"
           >
                          {/* Calendly Widget */}
-             <div style={{ height: '901px' }}>
+             <div style={{ height: '600px' }} className="sm:h-[700px] lg:h-[901px]">
                <iframe
                  src="https://calendly.com/comunkn/30min?embed_type=Inline&embed_domain=localhost&background_color=000000&text_color=ffffff&primary_color=ff00f8"
                  width="100%"
                  height="100%"
                  frameBorder="0"
                  title="Schedule a call with CommuScale"
-                 className="rounded-2xl"
+                 className="rounded-xl sm:rounded-2xl"
                  style={{ overflow: 'hidden' }}
+                 loading="lazy"
                />
              </div>
 
