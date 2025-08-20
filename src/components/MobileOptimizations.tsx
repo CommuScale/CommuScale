@@ -11,9 +11,19 @@ export const useMobileDetection = () => {
       setIsTablet(width >= 768 && width < 1024);
     };
 
+    // Debounce resize events for better performance
+    let timeoutId: number;
+    const debouncedResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(checkDevice, 150);
+    };
+
     checkDevice();
-    window.addEventListener('resize', checkDevice);
-    return () => window.removeEventListener('resize', checkDevice);
+    window.addEventListener('resize', debouncedResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return { isMobile, isTablet };
@@ -50,14 +60,27 @@ export const useViewportHeight = () => {
       document.documentElement.style.setProperty('--vh', `${height * 0.01}px`);
     };
 
+    // Debounce viewport resize events
+    let timeoutId: number;
+    const debouncedUpdate = () => {
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(updateHeight, 100);
+    };
+
     updateHeight();
     
     if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', updateHeight);
-      return () => window.visualViewport?.removeEventListener('resize', updateHeight);
+      window.visualViewport.addEventListener('resize', debouncedUpdate, { passive: true });
+      return () => {
+        window.visualViewport?.removeEventListener('resize', debouncedUpdate);
+        clearTimeout(timeoutId);
+      };
     } else {
-      window.addEventListener('resize', updateHeight);
-      return () => window.removeEventListener('resize', updateHeight);
+      window.addEventListener('resize', debouncedUpdate, { passive: true });
+      return () => {
+        window.removeEventListener('resize', debouncedUpdate);
+        clearTimeout(timeoutId);
+      };
     }
   }, []);
 

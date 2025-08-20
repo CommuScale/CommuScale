@@ -9,6 +9,7 @@ import ProcessSection from './ProcessSection';
 import BookCallSection from './BookCallSection';
 
 import SmoothScrolling from './SmoothScrolling';
+import LazyLoad from './LazyLoad';
 import { useViewportHeight, usePerformanceMonitoring } from './MobileOptimizations';
 
 export default function App() {
@@ -53,11 +54,15 @@ export default function App() {
           <FloatingNavbar />
           
           {/* Main Content */}
-                         <main className="relative z-10">
-                 <HeroSection />
-                 <ProcessSection />
-                 <BookCallSection />
-               </main>
+          <main className="relative z-10">
+            <HeroSection />
+            <LazyLoad>
+              <ProcessSection />
+            </LazyLoad>
+            <LazyLoad>
+              <BookCallSection />
+            </LazyLoad>
+          </main>
           
           {/* Footer */}
           <footer className="relative z-10 bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-pink-900/20 backdrop-blur-xl py-12 sm:py-16 border-t border-purple-500/20">

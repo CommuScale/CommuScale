@@ -45,11 +45,16 @@ export default function BookCallSection() {
     }
   }, []);
 
-  // Auto-rotate testimonials
+  // Auto-rotate testimonials with better memory management
   useEffect(() => {
+    // Only auto-rotate on desktop to reduce mobile performance impact
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    
+    if (!isDesktop) return;
+
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 4000); // Change every 4 seconds
+    }, 5000); // Slightly longer interval for better performance
 
     return () => clearInterval(interval);
   }, [testimonials.length]);
@@ -139,14 +144,8 @@ export default function BookCallSection() {
             
 
                               {/* Testimonial Carousel */}
-                 <motion.div
-                   initial={{ opacity: 0, y: 30 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   transition={{ duration: 0.8, delay: 0.8 }}
-                   viewport={{ once: true }}
-                   className="mt-12 relative"
-                 >
-                   <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8 border border-white/10 min-h-[180px] flex flex-col overflow-hidden">
+                 <div className="mt-12 relative">
+                   <div className="bg-slate-800/50 rounded-xl p-8 border border-white/10 min-h-[180px] flex flex-col overflow-hidden">
                      <div className="flex-1 relative">
                        <AnimatePresence mode="wait">
                          <motion.div
@@ -192,7 +191,7 @@ export default function BookCallSection() {
                        ))}
                      </div>
                    </div>
-                 </motion.div>
+                 </div>
            </motion.div>
 
           {/* Right Column - Booking Interface */}

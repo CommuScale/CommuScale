@@ -23,7 +23,6 @@ export default function FloatingNavbar() {
 
   return (
     <>
-      {/* Desktop Navigation */}
       <motion.nav
         className="hidden md:block fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-40 bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-md rounded-full px-4 sm:px-6 py-3 sm:py-3 shadow-2xl border border-white/30"
         initial={{ y: -100, opacity: 0 }}

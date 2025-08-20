@@ -1,16 +1,11 @@
 import { motion, useInView } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useRef, useState, useEffect } from 'react';
 
 export default function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [timelineProgress, setTimelineProgress] = useState(0);
 
   const steps = [
     {
@@ -36,59 +31,50 @@ export default function ProcessSection() {
   ];
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    // Intersection observer for step activation and timeline progress
+    const observerOptions = {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0.1
+    };
 
-    const ctx = gsap.context(() => {
-      // Animate the timeline line
-      const timeline = timelineRef.current;
-      if (timeline) {
-        gsap.fromTo(timeline,
-          { height: '0%' },
-          {
-            height: '100%',
-            duration: 2,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 70%',
-              end: 'bottom 30%',
-              scrub: 1,
-            }
-          }
-        );
-      }
-
-      // Animate each step
-      steps.forEach((_, index) => {
-        const stepElement = document.querySelector(`[data-step="${index}"]`);
-        if (stepElement) {
-          gsap.fromTo(stepElement,
-            { 
-              opacity: 0, 
-              y: 50,
-              scale: 0.95 
-            },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.6,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: stepElement,
-                start: 'top 80%',
-                end: 'bottom 20%',
-                onEnter: () => setActiveStep(index),
-                onEnterBack: () => setActiveStep(index),
-              }
-            }
-          );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.getAttribute('data-step') || '0');
+          setActiveStep(index);
+          // Update timeline progress based on active step
+          setTimelineProgress((index + 1) / steps.length * 100);
         }
       });
-    }, sectionRef);
+    }, observerOptions);
 
-    return () => ctx.revert();
-  }, []);
+    // Observe all step elements
+    steps.forEach((_, index) => {
+      const stepElement = document.querySelector(`[data-step="${index}"]`);
+      if (stepElement) {
+        observer.observe(stepElement);
+      }
+    });
+
+    // Also observe the section for initial timeline animation
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && timelineProgress === 0) {
+          // Start timeline animation when section comes into view
+          setTimelineProgress(25); // Initial animation
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (sectionRef.current) {
+      sectionObserver.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      sectionObserver.disconnect();
+    };
+  }, [timelineProgress]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -142,12 +128,11 @@ export default function ProcessSection() {
 
         {/* Process Steps */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Timeline Line */}
+          {/* Timeline Line - Smooth Scroll-Based Animation */}
           <div className="absolute left-6 sm:left-8 md:left-12 top-0 w-0.5 bg-gray-700" style={{ height: 'calc(100% - 320px)' }}>
             <div 
-              ref={timelineRef}
-              className="w-full bg-gradient-to-b from-purple-500 to-pink-500 origin-top"
-              style={{ height: '0%' }}
+              className="w-full bg-gradient-to-b from-purple-500 to-pink-500 origin-top transition-all duration-1000 ease-out"
+              style={{ height: `${timelineProgress}%` }}
             />
           </div>
 

@@ -1,28 +1,12 @@
 import { useEffect } from 'react';
-import Lenis from 'lenis';
 
 export default function SmoothScrolling({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
+    // Use CSS scroll-behavior instead of heavy JavaScript library
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
     return () => {
-      lenis.destroy();
+      document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
 
