@@ -11,12 +11,12 @@ export default function ProcessSection() {
     {
       number: 1,
       title: "Strategy Call – Map the Mission",
-      description: "We start with a focused strategy session to understand your vision, your audience, and where the biggest opportunities lie. This is where we pinpoint exactly how CommuScale can help you scale your content and revenue."
+      description: "We uncover your biggest opportunities and map out a clear strategy to scale your content and revenue."
     },
     {
       number: 2,
-      title: "Market Deep-Dive – Craft the Winning Offer",
-      description: "Next, we conduct in-depth market research to identify what your audience craves and how to position you as the go-to solution. We then design a high-ticket offer that not only converts but creates loyal, repeat customers."
+      title: "Market Research – Build a High-Ticket Offer That Sells",
+      description: "We identify what your audience actually wants and help you package it into an irresistible offer."
     },
     {
       number: 3,
@@ -26,7 +26,7 @@ export default function ProcessSection() {
     {
       number: 4,
       title: "Launch & Scale – Turn Momentum Into Mastery",
-      description: "Once your system is live, we help you launch, attract the right audience, and scale consistently — so your brand grows, your influence expands, and your offer sells itself."
+      description: "We help you launch, attract the right audience, and scale consistently."
     }
   ];
 
@@ -206,7 +206,7 @@ export default function ProcessSection() {
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Ready to{' '}
                 <span 
-                  className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent underline decoration-purple-400"
                   style={{
                     backgroundSize: '200% 100%',
                     animation: 'gradient-slide 8s ease-in-out infinite',
@@ -217,18 +217,18 @@ export default function ProcessSection() {
                 Journey?
               </h3>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let's begin with Step 1. Book your strategy call today and map out your path to 7-figure success.
+                Let's scale your content and revenue. Book your strategy call today.
               </p>
-              <motion.button
+              <motion.a
+                href="https://calendly.com/comunkn/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-12 py-4 rounded-full font-semibold text-lg shadow-2xl transition-all duration-300"
-                onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-12 py-4 rounded-full font-semibold text-lg shadow-2xl transition-all duration-300"
               >
                 Book Your Strategy Call
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         </div>
